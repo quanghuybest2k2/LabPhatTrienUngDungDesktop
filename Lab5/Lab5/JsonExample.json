@@ -1,0 +1,25 @@
+﻿{
+  "SinhVien": [
+    {
+      "MSSV": "2015597",
+      "HoTen": "Đoàn Quang Huy",
+      "Tuoi": 20,
+      "Diem": 9.0,
+      "TonGiao": true
+    },
+    {
+      "MSSV": "2015589",
+      "HoTen": "Đỗ Hoài Nam",
+      "Tuoi": 20,
+      "Diem": 7.5,
+      "TonGiao": false
+    },
+    {
+      "MSSV": "1234567",
+      "HoTen": "Trần Nhật Duật",
+      "Tuoi": 18,
+      "Diem": 8.3,
+      "TonGiao": false
+    }
+  ]
+}
