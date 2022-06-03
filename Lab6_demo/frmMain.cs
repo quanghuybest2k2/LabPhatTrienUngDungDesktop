@@ -43,6 +43,7 @@ namespace Lab6
                 // bo sung cac thong tin khac cho listview
                 item.SubItems.Add(reader["Name"].ToString());
                 item.SubItems.Add(reader["Type"].ToString());
+
             }
         }
         private void btnLoad_Click(object sender, EventArgs e)
@@ -53,18 +54,18 @@ namespace Lab6
             sqlCommand.CommandText = "select id, name, type from category";
             //mở kết nối
             sqlConnection.Open();
-            
+
             //Thực thi bằng phương thức ExcuteReader
             SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
             // hiển thị dữ liệu listview
             DisplayCategory(sqlDataReader);
             // dong ket noi
             sqlConnection.Close();
-            
+
         }
         private void ChuaNhapThongTin()
         {
-            if (txtName.Text==""&&txtType.Text=="")
+            if (txtName.Text == "" && txtType.Text == "")
             {
                 MessageBox.Show("Bạn chưa điền thông tin!");
             }
@@ -80,7 +81,7 @@ namespace Lab6
             ChuaNhapThongTin();
             int numOfRowEffected = sqlCommand.ExecuteNonQuery();
             sqlConnection.Close();
-            if (numOfRowEffected==1)
+            if (numOfRowEffected == 1)
             {
                 MessageBox.Show("Thêm món ăn thành công!");
                 btnLoad.PerformClick();
@@ -120,7 +121,7 @@ namespace Lab6
             sqlConnection.Open();
             int numOfRowEffected = sqlCommand.ExecuteNonQuery();
             sqlConnection.Close();
-            if (numOfRowEffected==1)
+            if (numOfRowEffected == 1)
             {
                 //cap nhat lai listview
                 ListViewItem item = lvCategory.SelectedItems[0];
@@ -139,6 +140,46 @@ namespace Lab6
             else
             {
                 MessageBox.Show("Cập nhật không được!");
+            }
+        }
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            SqlConnection sqlConnection = new SqlConnection(@"Data Source=DESKTOP-QDTENRH\SQLEXPRESS;Initial Catalog=RestaurantManagement;Integrated Security=True");
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandText = "Delete from category where id = @id";
+            sqlCommand.Parameters.AddWithValue("@id", txtID.Text);
+            //mo ket noi
+            sqlConnection.Open();
+            int num = sqlCommand.ExecuteNonQuery();
+            sqlConnection.Close();
+            if (num == 1)
+            {
+                ListViewItem item = lvCategory.SelectedItems[0];
+                lvCategory.Items.Remove(item);
+                reset();
+                btnUpdate.Enabled = false;
+                btnDelete.Enabled = false;
+                MessageBox.Show("Xóa thành công");
+            }
+            else
+                MessageBox.Show("Đã có lỗi xảy ra!");
+        }
+
+        private void tsmiDelete_Click(object sender, EventArgs e)
+        {
+            if (lvCategory.SelectedItems.Count>0)
+            {
+                btnDelete.PerformClick();
+            }
+        }
+
+        private void tsmiViewFood_Click(object sender, EventArgs e)
+        {
+            if (txtID.Text!="")
+            {
+                frmFood foodForm = new frmFood();
+                foodForm.Show(this);
+                foodForm.loadFood(Convert.ToInt32(txtID.Text));
             }
         }
     }

@@ -29,6 +29,7 @@ namespace Lab6
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnLoad = new System.Windows.Forms.Button();
             this.lvCategory = new System.Windows.Forms.ListView();
             this.colMaLoai = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -43,6 +44,10 @@ namespace Lab6
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiViewFood = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnLoad
@@ -61,6 +66,7 @@ namespace Lab6
             this.colMaLoai,
             this.colTenLoai,
             this.colLoai});
+            this.lvCategory.ContextMenuStrip = this.contextMenuStrip1;
             this.lvCategory.FullRowSelect = true;
             this.lvCategory.GridLines = true;
             this.lvCategory.HideSelection = false;
@@ -167,6 +173,29 @@ namespace Lab6
             this.btnDelete.TabIndex = 7;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiDelete,
+            this.tsmiViewFood});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(200, 48);
+            // 
+            // tsmiDelete
+            // 
+            this.tsmiDelete.Name = "tsmiDelete";
+            this.tsmiDelete.Size = new System.Drawing.Size(199, 22);
+            this.tsmiDelete.Text = "Xóa món ăn";
+            this.tsmiDelete.Click += new System.EventHandler(this.tsmiDelete_Click);
+            // 
+            // tsmiViewFood
+            // 
+            this.tsmiViewFood.Name = "tsmiViewFood";
+            this.tsmiViewFood.Size = new System.Drawing.Size(199, 22);
+            this.tsmiViewFood.Text = "Xem danh sách món ăn";
+            this.tsmiViewFood.Click += new System.EventHandler(this.tsmiViewFood_Click);
             // 
             // frmMain
             // 
@@ -186,8 +215,9 @@ namespace Lab6
             this.Controls.Add(this.btnLoad);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Catefory Food";
             this.Load += new System.EventHandler(this.frmMain_Load);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -209,6 +239,9 @@ namespace Lab6
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem tsmiDelete;
+        private System.Windows.Forms.ToolStripMenuItem tsmiViewFood;
     }
 }
 

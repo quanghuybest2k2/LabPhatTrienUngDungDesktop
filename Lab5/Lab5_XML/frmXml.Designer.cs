@@ -46,6 +46,7 @@ namespace Lab5_XML
             // 
             // dtgvBook
             // 
+            this.dtgvBook.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvBook.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvBook.Location = new System.Drawing.Point(12, 220);
             this.dtgvBook.Name = "dtgvBook";
