@@ -34,7 +34,7 @@ namespace Lab5_Demo
                 new FileStream(filename, FileMode.Open));
             while ((t = sr.ReadLine()) != null)
             {
-                s = t.Split('\t');
+                s = t.Split('*');
                 sv = new SinhVien();
                 sv.MSSV = s[0];
                 sv.HoVaTenLot = s[1];
