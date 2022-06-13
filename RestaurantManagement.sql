@@ -1,4 +1,6 @@
-﻿USE [RestaurantManagement]
+﻿create database RestaurantManagement
+GO
+USE [RestaurantManagement]
 GO
 /****** Object:  Table [dbo].[Account]    Script Date: 6/4/2020 9:31:10 AM ******/
 SET ANSI_NULLS ON
@@ -249,18 +251,36 @@ GO
 
 CREATE PROCEDURE InsertFood
 @ID int output,
-@Name nvarchar(3000), 
-@Unit nvarchar(3000), 
+@Name nvarchar(1000), 
+@Unit nvarchar(100), 
 @FoodCategoryID int, 
 @Price int,  
 @Notes nvarchar(3000)
 AS
-	INSERT INTO Food (Name, Unit, FoodCategoryID, Price,  Notes)
-	VALUES ( @Name, @Unit, @FoodCategoryID, @Price,  @Notes)
+	INSERT INTO Food VALUES ( @Name, @Unit, @FoodCategoryID, @Price,  @Notes)
 
 	SELECT @ID = SCOPE_IDENTITY()
-
 go
+exec InsertFood @ID output, N'Thịt hổ VN', N'Đĩa', 6, 40000, NULL
+--select * from food
+--drop proc InsertFood
+-- update
+create proc UpdateFood
+@ID int output,
+@Name nvarchar(1000), 
+@Unit nvarchar(100), 
+@FoodCategoryID int, 
+@Price int,  
+@Notes nvarchar(3000)
+AS
+update Food Set [Name] = @Name, Unit = @Unit, FoodCategoryID = @FoodCategoryID, Price = @Price, Notes = @Notes 
+where ID = @ID
+if @@error <> 0 
+return 0
+else
+return 1
+go
+exec UpdateFood @ID, N'Thịt hổ VN', N'Đĩa', 6, 40000, NULL
 
 select f.Name, f.Price, bd.Quantity, f.Price * bd.Quantity as Amount from Food f, BillDetails bd, Bills b
 where bd.FoodID = f.ID and bd.InvoiceID = b.ID and bd.InvoiceID = 1

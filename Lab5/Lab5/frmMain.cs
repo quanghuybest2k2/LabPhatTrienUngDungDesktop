@@ -77,7 +77,6 @@ namespace Lab5
                 //str += string.Format("\nSinh viên thứ {0}\nMã số: {1}\nHọ và tên: {2}\nTuổi: {3}\nĐiểm TB: {4}\nTôn giáo: {5}\n------------------------", (i + 1), info.MSSV, info.HoTen, info.Tuoi, info.Diem, checkTongGiao);
             }
             //MessageBox.Show(str);
-
         }
     }
 }

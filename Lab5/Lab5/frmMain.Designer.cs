@@ -72,14 +72,15 @@ namespace Lab5
             this.colTuoi,
             this.colDiem,
             this.colTonGiao});
-            this.lvSinhVien.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lvSinhVien.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvSinhVien.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvSinhVien.FullRowSelect = true;
             this.lvSinhVien.GridLines = true;
             this.lvSinhVien.HideSelection = false;
-            this.lvSinhVien.Location = new System.Drawing.Point(0, 260);
+            this.lvSinhVien.Location = new System.Drawing.Point(0, 103);
             this.lvSinhVien.MultiSelect = false;
             this.lvSinhVien.Name = "lvSinhVien";
-            this.lvSinhVien.Size = new System.Drawing.Size(800, 190);
+            this.lvSinhVien.Size = new System.Drawing.Size(800, 347);
             this.lvSinhVien.TabIndex = 2;
             this.lvSinhVien.UseCompatibleStateImageBehavior = false;
             this.lvSinhVien.View = System.Windows.Forms.View.Details;
